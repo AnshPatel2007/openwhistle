@@ -26,9 +26,11 @@ services:
       - JWT_SECRET=${JWT_SECRET}
       - ADMIN_INIT_PASSWORD=${ADMIN_INIT_PASSWORD}
       - DATABASE_URL=file:/app/data/whistle.db
+      - ENABLE_BACKUPS=${ENABLE_BACKUPS:-false}
     volumes:
       - sqlite-data:/app/data
       - uploads-data:/app/uploads
+      - ./backups:/app/backups
     ports:
       - "3000:3000"
     networks:

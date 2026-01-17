@@ -1,11 +1,13 @@
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import { config } from './config/env';
 import { apiRateLimiter } from './middleware/rateLimiter';
+import { initBackupScheduler } from './services/backup';
 
 // Import routes
 import publicRoutes from './routes/public';
@@ -19,6 +21,25 @@ const app = express();
 const prisma = new PrismaClient();
 
 // =============================================================================
+// SECURITY: Helmet for HTTP security headers
+// =============================================================================
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'"],
+            styleSrc: ["'self'", "'unsafe-inline'"], // Allow inline styles for generated content
+            imgSrc: ["'self'", "data:", "blob:"], // Allow images from self, data URIs, and blobs
+            fontSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            upgradeInsecureRequests: config.nodeEnv === 'production' ? [] : null,
+        },
+    },
+    crossOriginEmbedderPolicy: false, // Disable COEP for file uploads
+    crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow static files from /uploads
+}));
+
+// =============================================================================
 // SECURITY: No-Log Policy - Custom Morgan format that excludes IP addresses
 // =============================================================================
 morgan.token('no-ip', (req) => {
@@ -26,7 +47,6 @@ morgan.token('no-ip', (req) => {
 });
 
 app.use(morgan(':no-ip :status :response-time ms', {
-    // Skip logging for health checks
     skip: (req) => req.url === '/health',
 }));
 
@@ -115,6 +135,9 @@ async function initializeDatabase() {
 
 async function main() {
     await initializeDatabase();
+
+    // Initialize backup scheduler
+    initBackupScheduler();
 
     app.listen(config.port, () => {
         console.log(`OpenWhistle server running on port ${config.port}`);
